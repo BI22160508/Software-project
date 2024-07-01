@@ -2,6 +2,38 @@ import numpy as np
 import pandas as pd
 from scipy.sparse.linalg import svds
 
+"""
+This script performs book recommendations based on user ratings using Singular Value Decomposition (SVD).
+
+It reads data from three CSV files ('Books.csv', 'Ratings.csv', 'Users.csv') located at specified absolute paths.
+After data loading and preprocessing, it performs the following steps:
+1. Merges user ratings with user data to associate ratings with user details.
+2. Merges books data with user ratings based on ISBN to create a consolidated dataframe.
+3. Creates a pivot table of user-book ratings for matrix factorization using SVD.
+4. Decomposes the pivot matrix into user and book features using SVD.
+5. Implements functions to compute cosine similarity between books and retrieve top similar books.
+6. Allows user interaction to input a book title and obtain recommendations based on similar books.
+
+Functions:
+- top_cosine_similarity(data, book_id, top_n=10): Computes cosine similarity between a book and others.
+- similar_books(book_user_rating, book_id, top_indexes): Retrieves titles of top similar books.
+- get_recommendations(book_title): Searches for a book title, computes similarities, and provides recommendations.
+
+Dependencies:
+- numpy: For numerical operations and matrix computations.
+- pandas: For data manipulation and DataFrame operations.
+- scipy.sparse.linalg.svds: For Singular Value Decomposition (SVD) matrix factorization.
+
+Usage:
+Run the script and interactively input a book title to receive recommendations based on user ratings and similarity metrics.
+
+Example:
+$ python book_recommendation.py
+
+Author:
+CHEE SHANG KUN, NG CHUANG XIONG
+"""
+
 # Replace with your correct absolute paths
 books_file = r"C:/Users/Hp/Downloads/Books.csv/Books.csv"
 ratings_file = r"C:/Users/Hp/Desktop/Ratings.csv/Ratings.csv"
